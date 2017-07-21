@@ -34,12 +34,13 @@ class DumpHTTPMiddleware(object):
         response = self.get_response(request)
 
         request_str = reconstruct_request_or_response(request, 'request')
-        response_str = reconstruct_request_or_response(response, 'response')
+        # response_str = reconstruct_request_or_response(response, 'response')
+        response_str = response.serialize().decode("utf-8")
 
         # WARNING: Protocol (such as HTTP/1.1) is missing
         request_str = "%s %s\r\n%s" % (request.method, request.path, request_str)
         request_str += "\r\n\r\n" + request.body.decode("utf-8")
-        response_str += "\r\n\r\n" + response.content.decode("utf-8")
+        # response_str += "\r\n\r\n" + response.content.decode("utf-8")
 
         cur_time = int(time.time())
         try:
