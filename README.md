@@ -10,4 +10,8 @@ and outputs dump files to this dir.
 
 Request dump files end with `.1` and response dump files end with `.2`.
 
+The format of file names is:
+
+`T1-T2-S-K` where `T1` is the server start time (in seconds since the epoch), `T2` is the moment of the dump. `S` is zero-based serial number of the HTTP connection and `K` is `1` for requests and `2` for corresponding responses.
+
 This project is subject to some bugs, which are difficult to workaround in Django.
